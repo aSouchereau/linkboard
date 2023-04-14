@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('index');
 
 Route::resource('groups', 'App\Http\Controllers\GroupController');
 
