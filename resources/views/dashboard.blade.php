@@ -1,6 +1,7 @@
 @extends('master')
 @section('content')
-    <div>
-        content
-    </div>
+
+    @foreach($groups as $group)
+        <x-link-list groupId="{{$group->id}}"></x-link-list>
+    @endforeach
 @endsection
