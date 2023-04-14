@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::resource('groups', 'App\Http\Controllers\GroupController');
 
 Route::resource('links', 'App\Http\Controllers\LinkController');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
