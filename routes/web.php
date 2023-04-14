@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('groups', 'App\Http\Controllers\GroupController');
+
+Route::resource('links', 'App\Http\Controllers\LinkController');
