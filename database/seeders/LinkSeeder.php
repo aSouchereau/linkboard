@@ -17,7 +17,8 @@ class LinkSeeder extends Seeder
         Link::factory()
             ->count(10)
             ->forUser([
-                'username' => 'admin'
+                'name' => 'admin',
+                'admin' => true
             ])
             ->forGroup([
                 'name' => 'Default'
