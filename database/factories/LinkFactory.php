@@ -22,7 +22,7 @@ class LinkFactory extends Factory
         $groupIds = Group::pluck('id')->all();
         return [
             'name' => fake()->domainWord(),
-            'description' => fake()->sentence(2),
+            'description' => fake()->sentence(10),
             'url' => fake()->url(),
             'status_url' => fake()->url(),
             'icon_path' => fake()->imageUrl(),
