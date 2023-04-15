@@ -7,14 +7,6 @@ use Illuminate\Http\Request;
 
 class GroupController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $groups = Group::all();
-        return view('groups.index', compact('groups'));
-    }
 
     /**
      * Show the form for creating a new resource.

@@ -8,16 +8,6 @@ use Illuminate\Http\Request;
 class LinkController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     * TODO remove this method when dashboard page is made
-     */
-    public function index()
-    {
-        $links = Link::all();
-        return view('links.index', compact('links'));
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
     public function create()
