@@ -2,7 +2,7 @@
 @section('content')
 
     <section>
-        <div class="container flex flex-row">
+        <div class="container d-flex flex-wrap justify-content-center">
             @foreach($groups as $group)
                 <x-link-list groupId="{{$group->id}}"></x-link-list>
             @endforeach
