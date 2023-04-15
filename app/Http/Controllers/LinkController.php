@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LinkRequest;
 use App\Models\Link;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class LinkController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(LinkRequest $request)
     {
         $formData = $request->all();
         Link::create($formData);
@@ -45,7 +46,7 @@ class LinkController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, link $link)
+    public function update(LinkRequest $request, link $link)
     {
         $formData = $request->all();
         $link->update($formData);

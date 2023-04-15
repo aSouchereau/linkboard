@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GroupRequest;
 use App\Models\Group;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class GroupController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(GroupRequest $request)
     {
         $formData = $request->all();
         Group::create($formData);
@@ -47,7 +48,7 @@ class GroupController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, group $group)
+    public function update(GroupRequest $request, group $group)
     {
         $formData = $request->all();
         $group = Group::findOrFail($group);
