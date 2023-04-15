@@ -32,7 +32,6 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        $group = Group::findOrFail($group);
         return view('groups.show', compact('group'));
     }
 
@@ -41,7 +40,6 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
-        $group = Group::findOrFail($group);
         return view('groups.form', 'group');
     }
 
@@ -51,7 +49,6 @@ class GroupController extends Controller
     public function update(GroupRequest $request, group $group)
     {
         $formData = $request->all();
-        $group = Group::findOrFail($group);
         $group->update($formData);
 
         return redirect('dashboard');
