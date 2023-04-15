@@ -26,7 +26,6 @@ class LinkRequest extends FormRequest
             'description' => 'max:255',
             'url' => 'required|active_url',
             'status_url' => 'active_url',
-            'icon' => 'dimensions:ratio=1'
         ];
     }
 }
