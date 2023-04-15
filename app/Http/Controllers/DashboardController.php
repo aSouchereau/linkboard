@@ -10,9 +10,13 @@ use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
     public function index() {
-        $user = User::findOrFail(Auth::id());
         $groups = Group::all();
-        $userGroups = $user->groups;
-        return view('dashboard', compact('groups', 'userGroups'));
+        if (Auth::check()) {
+            $user = User::findOrFail(Auth::id());
+            $userGroups = $user->groups;
+            return view('dashboard', compact('groups', 'userGroups'));
+        } else {
+            return view('dashboard', compact('groups'));
+        }
     }
 }
