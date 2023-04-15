@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\link;
+use App\Models\Link;
 use Illuminate\Http\Request;
 
 class LinkController extends Controller
@@ -22,7 +22,7 @@ class LinkController extends Controller
      */
     public function create()
     {
-        //
+        return view('links.form');
     }
 
     /**
@@ -30,23 +30,26 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData = $request->all();
+        Link::create($formData);
+
+        return redirect('dashboard');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(link $link)
+    public function show(Link $link)
     {
-        //
+        return view('links.show', compact('link'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(link $link)
+    public function edit(Link $link)
     {
-        //
+        return view('links.form', compact('link'));
     }
 
     /**
@@ -54,14 +57,18 @@ class LinkController extends Controller
      */
     public function update(Request $request, link $link)
     {
-        //
+        $formData = $request->all();
+        $link->update($formData);
+
+        return redirect('dashboard');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(link $link)
+    public function destroy(Link $link)
     {
-        //
+        $link->delete();
+        return redirect('dashboard');
     }
 }
