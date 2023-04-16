@@ -9,7 +9,12 @@
                 <span><strong>{{$link->name}}</strong></span>
                 <p class="d-block text-truncate mb-0">{{$link->description}}</p>
             </div>
-            <i class="bi bi-three-dots-vertical col-1"></i>
+            <div class="dropdown col-1">
+                <span role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-three-dots-vertical"></i>
+                </span>
+                @include('partials.linkContextMenu')
+            </div>
         </div>
     @endforeach
 </div>
