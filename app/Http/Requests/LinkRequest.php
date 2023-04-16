@@ -23,9 +23,9 @@ class LinkRequest extends FormRequest
     {
         return [
             'name' => 'required|max:50',
-            'description' => 'max:255',
+            'description' => 'nullable|max:255',
             'url' => 'required|active_url',
-            'status_url' => 'active_url',
+            'status_url' => 'nullable|active_url',
         ];
     }
 }
