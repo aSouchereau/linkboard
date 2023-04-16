@@ -10,7 +10,12 @@ class Link extends Model
     use HasFactory;
 
     protected $fillable = [
-      ""
+        "name",
+        "description",
+        "url",
+        "status_url",
+        "group_id",
+        "user_id"
     ];
 
     public function user() {

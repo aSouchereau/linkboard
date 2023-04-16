@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LinkRequest;
+use App\Models\Group;
 use App\Models\Link;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class LinkController extends Controller
      */
     public function create()
     {
-        return view('links.form');
+        $groups = Group::all();
+        return view('links.create', compact('groups'));
     }
 
     /**
@@ -24,7 +26,7 @@ class LinkController extends Controller
         $formData = $request->all();
         Link::create($formData);
 
-        return redirect('dashboard');
+        return redirect('/');
     }
 
     /**
@@ -51,7 +53,7 @@ class LinkController extends Controller
         $formData = $request->all();
         $link->update($formData);
 
-        return redirect('dashboard');
+        return redirect('/');
     }
 
     /**
@@ -60,6 +62,6 @@ class LinkController extends Controller
     public function destroy(Link $link)
     {
         $link->delete();
-        return redirect('dashboard');
+        return redirect('/');
     }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('url');
             $table->string('status_url')->nullable();
-            $table->string('icon_path');
+            $table->string('icon_path')->nullable();
             $table->foreignId('user_id');
             $table->foreignId('group_id')->nullable();
 
