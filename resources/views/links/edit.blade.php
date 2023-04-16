@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <div class="container">
-        <form method="POST" action="{{ action([App\Http\Controllers\LinkController::class, 'update']) }}">
+        <form method="POST" action="{{ route('links.update', $link->id) }}">
             @method('PATCH')
             {{$buttonName = "Save Changes"}}
             {{$formLegend = "Edit Link"}}

@@ -42,7 +42,8 @@ class LinkController extends Controller
      */
     public function edit(Link $link)
     {
-        return view('links.form', compact('link'));
+        $groups = Group::all();
+        return view('links.edit', compact('link', 'groups'));
     }
 
     /**
