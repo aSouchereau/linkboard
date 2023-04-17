@@ -1,21 +1,27 @@
 @extends('layouts.master')
 @section('content')
-
-    <section>
-        <div class="container d-flex flex-wrap justify-content-center">
+    @isset($user)
+        <section class="container">
+            <h2>Your Groups</h2>
+            <div class="row">
+                @foreach($userGroups as $group)
+                    <div class="mx-4 mb-5 col-3">
+                        <x-link-list groupId="{{$group->id}}"></x-link-list>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+    @endif
+    <section class="container">
+        <h2>Default Groups</h2>
+        <div class="row">
             @foreach($groups as $group)
-                <x-link-list groupId="{{$group->id}}"></x-link-list>
+                <div class="mx-4 mb-5 col-3">
+                    <x-link-list groupId="{{$group->id}}"></x-link-list>
+                </div>
+
             @endforeach
         </div>
     </section>
 
-
-    @if(\Illuminate\Support\Facades\Auth::check())
-        <section>
-            <h2>User Groups</h2>
-        @foreach($userGroups as $group)
-            <x-link-list groupId="{{$group->id}}"></x-link-list>
-        @endforeach
-        </section>
-    @endif
 @endsection
