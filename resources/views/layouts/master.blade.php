@@ -15,6 +15,17 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    @isset($backgroundImage)
+        <style>
+            main {
+                background-image: url({{asset('storage/' . $backgroundImage)}});
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+            }
+        </style>
+    @endisset
 </head>
 <body>
     <div id="app">

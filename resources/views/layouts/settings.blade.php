@@ -17,7 +17,7 @@
                         <a href="" class="nav-link">Manage Shared Groups</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Customization</a>
+                        <a href="{{route('customization.index')}}" class="nav-link">Customization</a>
                     </li>
                 </ul>
             </nav>

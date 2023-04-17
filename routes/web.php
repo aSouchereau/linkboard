@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomizationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,10 @@ Route::resource('links', 'App\Http\Controllers\LinkController');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('settings')->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/customization', [CustomizationController::class, 'index'])->name('customization.index');
+    Route::patch('/customization/background', [CustomizationController::class, 'storeBackgroundImage'])->name('customization.bgStore');
+    Route::patch('/customization/background/remove', [CustomizationController::class, 'removeBackgroundImage'])->name('customization.bgRemove');
+});
+
