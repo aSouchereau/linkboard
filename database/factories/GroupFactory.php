@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,9 +17,11 @@ class GroupFactory extends Factory
      */
     public function definition(): array
     {
+        $userIds = User::pluck('id')->all();
         return [
             'name' => fake()->colorName(),
-            'icon' => fake()->emoji()
+            'icon' => fake()->emoji(),
+            'user_id' => fake()->randomElement($userIds),
         ];
     }
 }
