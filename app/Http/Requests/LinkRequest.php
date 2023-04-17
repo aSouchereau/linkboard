@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Link;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class LinkRequest extends FormRequest
 {
@@ -11,7 +14,13 @@ class LinkRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        $link = Link::find($this->link->id);
+        $user = User::findOrFail(Auth::id());
+        if ($user->id === $link->user_id || $user->admin === 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

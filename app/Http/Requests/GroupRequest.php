@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Group;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class GroupRequest extends FormRequest
 {
@@ -11,7 +14,13 @@ class GroupRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        $group = Group::find($this->group->id);
+        $user = User::findOrFail(Auth::id());
+        if ($user->id === $group->user_id || $user->admin === 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
