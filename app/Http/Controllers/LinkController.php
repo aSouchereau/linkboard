@@ -27,7 +27,11 @@ class LinkController extends Controller
     public function create()
     {
         $user = User::findOrFail(Auth::id());
-        $groups = Group::where('user_id', $user->id);
+        if ($user->admin === 1) {
+            $groups = Group::all();
+        } else {
+            $groups = Group::where('user_id', $user->id);
+        }
         return view('links.create', compact('groups'));
     }
 
@@ -60,7 +64,11 @@ class LinkController extends Controller
     public function edit(Link $link)
     {
         $user = User::findOrFail(Auth::id());
-        $groups = Group::where('user_id', $user->id);
+        if ($user->admin === 1) {
+            $groups = Group::all();
+        } else {
+            $groups = Group::where('user_id', $user->id);
+        }
         return view('links.edit', compact('link', 'groups'));
     }
 
