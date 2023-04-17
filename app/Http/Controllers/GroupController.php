@@ -15,7 +15,7 @@ class GroupController extends Controller
 
     public function index() {
         $user = User::findOrFail(Auth::id());
-        $userGroups = $user->groups;
+        $userGroups = Group::where('user_id', $user->id)->get();
         if ($user->admin === 1) {
             $defaultGroups = Group::where('default', 1)->get();
             return view('groups.index', compact('userGroups', 'user',  'defaultGroups'));
@@ -29,7 +29,8 @@ class GroupController extends Controller
      */
     public function create()
     {
-        return view('groups.form');
+        $user = User::findOrFail(Auth::id());
+        return view('groups.create', compact('user'));
     }
 
     /**
@@ -39,7 +40,7 @@ class GroupController extends Controller
     {
         $formData = $request->all();
         Group::create($formData);
-        return redirect('dashboard');
+        return redirect('/');
     }
 
     /**
@@ -55,7 +56,8 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
-        return view('groups.form', 'group');
+        $user = User::findOrFail(Auth::id());
+        return view('groups.edit', compact('group'));
     }
 
     /**
@@ -66,7 +68,7 @@ class GroupController extends Controller
         $formData = $request->all();
         $group->update($formData);
 
-        return redirect('dashboard');
+        return redirect('/');
     }
 
     /**
@@ -76,6 +78,6 @@ class GroupController extends Controller
     {
         $group->delete();
 
-        return redirect('dashboard');
+        return redirect('/');
     }
 }

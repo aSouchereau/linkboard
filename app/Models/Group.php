@@ -9,6 +9,13 @@ class Group extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "name",
+        "icon",
+        "user_id",
+        "default"
+    ];
+
     public function links() {
         return $this->hasMany(Link::class);
     }
