@@ -28,7 +28,7 @@ class CustomizationController extends Controller
      * @param BackgroundImageRequest $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function storeBackgroundImage(BackgroundImageRequest $request) {
+    public function updateBackgroundImage(BackgroundImageRequest $request) {
         $user = User::findOrFail(Auth::id());
         if($user && $request->hasFile('background_image') && $request->file('background_image')->isValid()) {
             $path = $request->background_image->storePublicly('users', 'public');
@@ -38,13 +38,10 @@ class CustomizationController extends Controller
         return redirect('/settings/customization');
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
     public function removeBackgroundImage() {
         $user = User::findOrFail(Auth::id());
         if ($user) {
-            $user->background_image = null;
+            $user->background_image = "";
             $user->save();
         }
         return redirect('/settings/customization');

@@ -25,7 +25,7 @@ Auth::routes();
 Route::prefix('settings')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/customization', [CustomizationController::class, 'index'])->name('customization.index');
-    Route::patch('/customization/background', [CustomizationController::class, 'storeBackgroundImage'])->name('customization.bgStore');
+    Route::patch('/customization/background', [CustomizationController::class, 'updateBackgroundImage'])->name('customization.bgUpdate');
     Route::patch('/customization/background/remove', [CustomizationController::class, 'removeBackgroundImage'])->name('customization.bgRemove');
 });
 
