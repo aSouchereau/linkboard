@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('index');
 
-Route::resource('groups', 'App\Http\Controllers\GroupController')->except(['index']);
+Route::resource('groups', 'App\Http\Controllers\GroupController');
 
-Route::resource('links', 'App\Http\Controllers\LinkController')->except(['index']);
+Route::resource('links', 'App\Http\Controllers\LinkController');
 
 Auth::routes();
 

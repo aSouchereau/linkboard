@@ -12,6 +12,11 @@ class GroupController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
+    public function index() {
+        $groups = Group::paginate(10);
+        return view('groups.index', compact('groups'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

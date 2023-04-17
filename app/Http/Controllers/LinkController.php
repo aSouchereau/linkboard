@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class LinkController extends Controller
 {
+    public function index() {
+        $links = Link::paginate(10);
+        return view('links.index', compact('links'));
+    }
+
     public function __construct() {
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
