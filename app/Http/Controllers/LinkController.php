@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LinkRequest;
 use App\Models\Group;
 use App\Models\Link;
+use App\Models\User;
 use Illuminate\Http\Request;
 use AshAllenDesign\FaviconFetcher\Facades\Favicon;
+use Illuminate\Support\Facades\Auth;
 
 class LinkController extends Controller
 {
@@ -24,7 +26,8 @@ class LinkController extends Controller
      */
     public function create()
     {
-        $groups = Group::all();
+        $user = User::findOrFail(Auth::id());
+        $groups = Group::where('user_id', $user->id);
         return view('links.create', compact('groups'));
     }
 
@@ -56,7 +59,8 @@ class LinkController extends Controller
      */
     public function edit(Link $link)
     {
-        $groups = Group::all();
+        $user = User::findOrFail(Auth::id());
+        $groups = Group::where('user_id', $user->id);
         return view('links.edit', compact('link', 'groups'));
     }
 
