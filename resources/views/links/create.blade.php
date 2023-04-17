@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+@extends('layouts.settings')
+@section('settingsContent')
     <div class="container">
         <form method="POST" action="{{ action([App\Http\Controllers\LinkController::class, 'store']) }}">
             @php( $formLegend = "Create Link")

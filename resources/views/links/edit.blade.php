@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+@extends('layouts.settings')
+@section('settingsContent')
     <div class="container">
         <form method="POST" action="{{ route('links.update', $link->id) }}">
             @method('PATCH')

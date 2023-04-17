@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+@extends('layouts.settings')
+@section('settingsContent')
     <div class="container">
         <h1>{{$user->name}}'s Groups</h1>
         <ul class="list-group mb-3">
