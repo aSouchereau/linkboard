@@ -6,6 +6,7 @@ use App\Http\Requests\LinkRequest;
 use App\Models\Group;
 use App\Models\Link;
 use Illuminate\Http\Request;
+use AshAllenDesign\FaviconFetcher\Facades\Favicon;
 
 class LinkController extends Controller
 {
@@ -32,8 +33,12 @@ class LinkController extends Controller
      */
     public function store(LinkRequest $request)
     {
-        $formData = $request->all();
-        Link::create($formData);
+        $group = Group::findOrFail($request->group_id);
+        $link = new Link($request->all());
+        $link->group()->associate($group)->save();
+        $link->icon_path = Favicon::fetchAll($request->url)->largest()->store('favicons', 'public');
+        $link->save();
+
 
         return redirect('/');
     }

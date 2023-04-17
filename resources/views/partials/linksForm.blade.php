@@ -32,7 +32,11 @@
             <select name="group_id" id="group_id">
                 <option value="" selected disabled hidden>Select Group</option>
                 @foreach($groups as $group)
-                    <option value="{{$group->id}}" {{$link->group_id === $group->id ? "selected" : ""}}>{{$group->name}}</option>
+                    @isset($link)
+                            <option value="{{$group->id}}" {{$link->group_id === $group->id ? "selected" : ""}}>{{$group->name}}</option>
+                    @else
+                        <option value="{{$group->id}}">{{$group->name}}</option>
+                    @endisset
                 @endforeach
             </select>
         </div>

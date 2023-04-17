@@ -14,6 +14,7 @@ class Link extends Model
         "description",
         "url",
         "status_url",
+        "icon_path",
         "group_id",
         "user_id"
     ];

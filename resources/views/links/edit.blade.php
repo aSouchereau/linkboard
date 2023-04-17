@@ -3,9 +3,10 @@
     <div class="container">
         <form method="POST" action="{{ route('links.update', $link->id) }}">
             @method('PATCH')
-            {{$buttonName = "Save Changes"}}
             {{$formLegend = "Edit Link"}}
             @include('partials.linksForm')
+            <button type="submit" class="btn btn-primary">Add Link</button>
         </form>
+        @include('partials.formErrors')
     </div>
 @endsection
