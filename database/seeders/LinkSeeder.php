@@ -21,7 +21,8 @@ class LinkSeeder extends Seeder
                 'admin' => true
             ])
             ->forGroup([
-                'name' => 'Default'
+                'name' => 'Default',
+                'default' => true
             ])
             ->create();
 

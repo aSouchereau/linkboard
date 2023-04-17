@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('icon')->nullable();
+            $table->boolean('default')->default(false);
             $table->foreignId('user_id');
             $table->timestamps();
 

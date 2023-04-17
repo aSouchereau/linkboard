@@ -4,17 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GroupRequest;
 use App\Models\Group;
-use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['show']]);
     }
 
     public function index() {
-        $groups = Group::paginate(10);
-        return view('groups.index', compact('groups'));
+        $user = User::findOrFail(Auth::id());
+        $userGroups = $user->groups;
+        if ($user->admin === 1) {
+            $defaultGroups = Group::where('default', 1)->get();
+            return view('groups.index', compact('userGroups', 'user',  'defaultGroups'));
+        } else {
+            return view('groups.index', compact('userGroups', 'user'));
+        }
     }
 
     /**
