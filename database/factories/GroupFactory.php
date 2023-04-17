@@ -17,10 +17,23 @@ class GroupFactory extends Factory
      */
     public function definition(): array
     {
+        $icons = [
+            "bi-amd",
+            "bi-android",
+            "bi-apple",
+            "bi-bank",
+            "bi-basket",
+            "bi-book",
+            "bi-fast-forward",
+            "bi-database",
+            "bi-hdd-rack",
+            "bi-lock",
+            "bi-shield"
+        ];
         $userIds = User::pluck('id')->all();
         return [
             'name' => fake()->colorName(),
-            'icon' => fake()->emoji(),
+            'icon' => fake()->randomElement($icons),
             'user_id' => fake()->randomElement($userIds),
         ];
     }

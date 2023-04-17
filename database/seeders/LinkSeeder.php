@@ -13,20 +13,6 @@ class LinkSeeder extends Seeder
      */
     public function run(): void
     {
-        // Generate default public links
-        Link::factory()
-            ->count(10)
-            ->forUser([
-                'name' => 'admin',
-                'admin' => true
-            ])
-            ->forGroup([
-                'name' => 'Default',
-                'default' => true
-            ])
-            ->create();
-
-        // Generate user's private links
         Link::factory(10)->create();
     }
 }
