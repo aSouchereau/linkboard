@@ -1,9 +1,12 @@
 @extends('layouts.master')
 @section('content')
     <div class="row">
-        <div class="col-2 bg-white shadow-sm">
+        <div class="col-2 bg-white shadow-sm min-vh-100">
             <nav class="mx-2 mt-4">
                 <ul class="navbar-nav d-flex flex-column gap-3 ms-auto">
+                    <li class="nav-item">
+                        <a href="{{route('home')}}" class="nav-link">Settings Home</a>
+                    </li>
                     <li class="nav-item">
                         <a href="{{route('links.index')}}" class="nav-link">Manage Links</a>
                     </li>
