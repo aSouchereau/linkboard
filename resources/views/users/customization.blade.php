@@ -7,12 +7,12 @@
 
                 <div class="card-body">
                     <div class="row">
-                        @if($backgroundImage)
+                        @isset($backgroundImage)
                             <div class="col-3">
                                 <h5>Image Preview</h5>
                                 <img src="{{ asset('storage/' . $backgroundImage) }}" alt="Background Image" width="150px" height="150px">
                             </div>
-                        @endif
+                        @endisset
                         <div class="col-6">
                             <form method="POST" action="{{ action([App\Http\Controllers\CustomizationController::class, 'updateBackgroundImage']) }}" enctype="multipart/form-data">
                                 @csrf
