@@ -20,7 +20,7 @@
         <div class="card p-2 mb-2 d-flex flex-row justify-content-between align-items-center">
             @isset($link->icon_path)
                 <div class="col-2">
-                    <img src="{{asset('storage/' . $link->icon_path)}}" alt="Link Icon">
+                    <img class="w-75" src="{{asset('storage/' . $link->icon_path)}}" alt="Link Icon">
                 </div>
             @endisset
             <div class="col-9">
