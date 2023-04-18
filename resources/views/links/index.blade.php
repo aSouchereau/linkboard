@@ -1,7 +1,8 @@
 @extends('layouts.settings')
 @section('settingsContent')
     <div class="container">
-        <h1>All Links</h1>
+        <h1>Your Links</h1>
+        <a class="btn btn-sm btn-secondary" href="{{route('links.create')}}">Add Link</a>
         <ul class="list-group mb-3">
             <li class="list-group-item list-group-item-secondary row d-flex">
                 <span class="col-2">Link Name</span>

@@ -2,6 +2,7 @@
 @section('settingsContent')
     <div class="container">
         <h1>{{$user->name}}'s Groups</h1>
+        <a class="btn btn-sm btn-secondary" href="{{route('groups.create')}}">Add Group</a>
         <ul class="list-group mb-3">
             <li class="list-group-item list-group-item-secondary row d-flex">
                 <span class="col-2">Group Name</span>
