@@ -30,7 +30,7 @@ class LinkController extends Controller
         if ($user->admin === 1) {
             $groups = Group::all();
         } else {
-            $groups = Group::where('user_id', $user->id);
+            $groups = Group::where('user_id', $user->id)->get();
         }
         return view('links.create', compact('groups'));
     }

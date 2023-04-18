@@ -14,12 +14,16 @@ class GroupRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        $group = Group::find($this->group->id);
-        $user = User::findOrFail(Auth::id());
-        if ($user->id === $group->user_id || $user->admin === 1) {
-            return true;
+        if ($this->isMethod('patch')) {
+            $group = Group::find($this->group->id);
+            $user = User::findOrFail(Auth::id());
+            if ($user->id === $group->user_id || $user->admin === 1) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
-            return false;
+            return true;
         }
     }
 

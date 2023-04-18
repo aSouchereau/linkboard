@@ -14,13 +14,18 @@ class LinkRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        $link = Link::find($this->link->id);
-        $user = User::findOrFail(Auth::id());
-        if ($user->id === $link->user_id || $user->admin === 1) {
-            return true;
+        if ($this->isMethod('patch')) {
+            $link = Link::find($this->link->id);
+            $user = User::findOrFail(Auth::id());
+            if ($user->id === $link->user_id || $user->admin === 1) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
-            return false;
+            return true;
         }
+
     }
 
     /**
