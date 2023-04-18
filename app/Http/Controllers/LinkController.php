@@ -12,15 +12,15 @@ use Illuminate\Support\Facades\Auth;
 
 class LinkController extends Controller
 {
-    public function index() {
-        $links = Link::paginate(10);
-        return view('links.index', compact('links'));
-    }
-
     public function __construct() {
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
+    public function index() {
+        $user = User::findOrFail(Auth::id());
+        $links = Link::where('user_id', $user->id)->paginate(10);
+        return view('links.index', compact('links', 'user'));
+    }
     /**
      * Show the form for creating a new resource.
      */
