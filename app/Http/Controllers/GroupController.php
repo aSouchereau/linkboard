@@ -57,7 +57,7 @@ class GroupController extends Controller
     public function edit(Group $group)
     {
         $user = User::findOrFail(Auth::id());
-        return view('groups.edit', compact('group'));
+        return view('groups.edit', compact('group', 'user'));
     }
 
     /**
