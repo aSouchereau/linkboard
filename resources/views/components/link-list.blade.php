@@ -16,7 +16,7 @@
 
     @isset($user)
         @if(count($group->links) === 0 && $user->admin == 1)
-            <div role="button" type="button" class="new-link-button card p-3 mb-2 d-flex flex-row justify-content-between align-items-center" data-bs-toggle="modal" data-bs-target="#createLinkModal">
+            <div role="button" type="button" class="link-card card p-3 mb-2 d-flex flex-row justify-content-between align-items-center" data-bs-toggle="modal" data-bs-target="#createLinkModal">
                 <i class="bi bi-plus"></i>
                 <span class="col-10">Add New Link</span>
             </div>
@@ -24,13 +24,13 @@
     @endisset
 
     @foreach($group->links as $link)
-        <div class="card p-2 mb-2 d-flex flex-row justify-content-between align-items-center">
+        <div class="link-card card p-2 mb-2 d-flex flex-row justify-content-between align-items-center">
             @isset($link->icon_path)
-                <div class="col-2">
+                <div class="col-2" role="button" onclick="window.open('{{$link->url}}');">
                     <img class="w-75" src="{{asset('storage/' . $link->icon_path)}}" alt="Link Icon">
                 </div>
             @endisset
-            <div class="col-9">
+            <div class="col-9"  role="button" onclick="window.open('{{$link->url}}');">
                 <span><strong>{{$link->name}}</strong></span>
                 <p class="d-block text-truncate mb-0">{{$link->description}}</p>
             </div>
