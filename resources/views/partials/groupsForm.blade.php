@@ -13,7 +13,7 @@
     @if($user->admin)
         <div class="mb-3">
             <label for="default" class="form-check-label">Group is public</label>
-            <input type="checkbox" id="default" name="default" class="form-check-input" value="1" {{ old('default') ? 'checked="checked"' : '' }}>
+            <input type="checkbox" id="default" name="default" class="form-check-input" value="1" {{ old('default', isset($group->default) ? 'checked' : '') }}>
         </div>
     @endif
     <div class="visually-hidden">
