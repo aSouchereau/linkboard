@@ -21,24 +21,17 @@
         <label for="user_id"></label>
         <input type="text" id="user_id" name="user_id" value="{{\Illuminate\Support\Facades\Auth::id()}}" hidden>
     </div>
-    @isset($currentGroup)
-        <div class="visually-hidden">
-            <label for="group_id"></label>
-            <input type="text" id="group_id" name="group_id" value="{{$currentGroup->id}}" hidden>
-        </div>
-    @else
-        <div class="mb-3">
-            <label for="group_id">Group</label>
-            <select name="group_id" id="group_id">
-                <option value="" selected disabled hidden>Select Group</option>
-                @foreach($groups as $group)
-                    @isset($link)
-                            <option value="{{$group->id}}" {{$link->group_id === $group->id ? "selected" : ""}}>{{$group->name}}</option>
-                    @else
-                        <option value="{{$group->id}}">{{$group->name}}</option>
-                    @endisset
-                @endforeach
-            </select>
-        </div>
-    @endisset
+    <div class="mb-3">
+        <label for="group_id">Group</label>
+        <select name="group_id" id="group_id">
+            <option value="" selected disabled hidden>Select Group</option>
+            @foreach($groups as $group)
+                @isset($link)
+                        <option value="{{$group->id}}" {{$link->group_id === $group->id ? "selected" : ""}}>{{$group->name}}</option>
+                @else
+                    <option value="{{$group->id}}">{{$group->name}}</option>
+                @endisset
+            @endforeach
+        </select>
+    </div>
 </fieldset>
