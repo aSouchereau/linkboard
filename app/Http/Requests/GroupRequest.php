@@ -35,7 +35,7 @@ class GroupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:groups|max:20'
+            'name' => 'required|max:20'
         ];
     }
 }
