@@ -24,4 +24,23 @@
         </div>
     </section>
 
+
+    <div class="modal fade" id="createLinkModal" tabindex="-1" aria-labelledby="createLinkModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createLinkModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ action([App\Http\Controllers\LinkController::class, 'store']) }}">
+                        @php( $formLegend = "Create Link")
+                        @include('partials.linksForm')
+                        <button type="submit" class="btn btn-primary">Add Link</button>
+                    </form>
+                    @include('partials.formErrors')
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
