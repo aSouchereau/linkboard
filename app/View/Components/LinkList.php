@@ -24,8 +24,12 @@ class LinkList extends Component
      */
     public function render(): View|Closure|string
     {
-        $user = User::findOrFail(Auth::id());
         $group = Group::findOrFail($this->groupId);
-        return view('components.link-list', compact('group', 'user'));
+        if (Auth::check()) {
+            $user = User::findOrFail(Auth::id());
+            return view('components.link-list', compact('group', 'user'));
+        } else {
+            return view('components.link-list', compact('group'));
+        }
     }
 }
