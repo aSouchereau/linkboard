@@ -25,7 +25,7 @@
         </div>
     </section>
 
-
+    @isset($user)
     <div class="modal fade" id="createLinkModal" tabindex="-1" aria-labelledby="createLinkModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -63,4 +63,5 @@
             </div>
         </div>
     </div>
+    @endisset
 @endsection
